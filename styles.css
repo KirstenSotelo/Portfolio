@@ -8,11 +8,14 @@
   --op-text-color: #FFFFFF;
   --menu-text-color: #000000;
   --primary-color: #007bff;
+  --primary-color-alt: #007bff;
   --secondary-color: #1d3b66;
   --btn-color: #1d3b66;
   --btn-bg-color: transparent;
+  --btn-bg-color-alt: transparent;
   --btn-outline-color: #1d3b66;
   --accent-color: #28a745;
+  --footer-color: #F0F0F0;
 }
 
 body {
@@ -29,14 +32,17 @@ body {
   --menu-text-color: #FFFFFF;
   --op-text-color: #000000;
   --primary-color: #05f7ff;
+  --primary-color-alt: #05f7ff;
   --secondary-color: #b8f4fb;
   --btn-color: #b8f4fb;
-  --btn-bg-color: transparent;
+  --btn-bg-color: #222222;
+  --btn-bg-color-alt: #282828;
   --btn-outline-color: #b8f4fb;
   --accent-color: #5cb85c;
+  --footer-color: #1D1D1D;
 }
 
-.blue-theme {
+.blue-gold-theme {
   --bg-color: #F7F7F7;
   --hd-color: linear-gradient(0deg, rgba(0,53,149,1) 0%, rgba(0,53,149,0.8) 0%, rgba(0,53,149,1) 100%);
   --hd-text-color: #ffffff;
@@ -45,11 +51,32 @@ body {
   --op-text-color: #ffffff;
   --menu-text-color: #FFFFFF;
   --primary-color: #ffb91d;
+  --primary-color-alt: #ffb91d;
   --secondary-color: #003595;
   --btn-color: #004c9b;
   --btn-bg-color: #e5e5e5;
+  --btn-bg-color-alt: #e5e5e5;
   --btn-outline-color: #e5e5e5;
   --accent-color: #00a86b;
+}
+
+.colorful-theme {
+  --bg-color: url('./public_img/background-alt.png');
+  --hd-color: linear-gradient(0deg, rgba(22,22,22,0) 0%, rgba(25,25,25,0.7) 0%, rgba(17,17,17,1) 100%);
+  --hd-text-color: #ffffff;
+  --bg-color-alt: url('./public_img/background-main.png');
+  --text-color: #FFFFFF;
+  --op-text-color: #000000;
+  --menu-text-color: #FFFFFF;
+  --primary-color: #00ffc3;
+  --primary-color-alt: #ff1a53;
+  --secondary-color: #fff;
+  --btn-color: #fff;
+  --btn-bg-color: #00ff7720;
+  --btn-bg-color-alt: #bd1a4460;
+  --btn-outline-color: #fff;
+  --accent-color: #5cb85c;
+  --footer-color: #1D1D1D;
 }
 
 * {
@@ -62,7 +89,9 @@ body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  background-color: var(--bg-color);
+  background: var(--bg-color);
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
@@ -173,7 +202,7 @@ nav ul li a:hover {
 }
 
 .theme-button.active {
-  background-color: var(--background-color);
+  background: var(--background-color);
   color: var(--primary-color);
   border-color: var(--primary-color);
   outline: 2px solid var(--primary-color);
@@ -301,7 +330,7 @@ nav ul li a:hover {
 /* Rest of the CSS remains unchanged */
 
 .skill-card {
-  background-color: var(--bg-color);
+  background: var(--btn-bg-color-alt);
   color: var(--text-color);
   padding: 1rem;
   border-radius: 8px;
@@ -358,7 +387,9 @@ nav ul li a:hover {
 
 /* Hero section styles */
 .hero {
-  background-color: var(--bg-color);
+  background: var(--bg-color);
+  background-size: cover;
+  background-position: center;
   text-align: center;
   padding: 8rem 0 4rem;
 }
@@ -426,7 +457,9 @@ nav ul li a:hover {
 /* About section styles */
 .about {
   padding: 4rem 0;
-  background-color: var(--bg-color-alt);
+  background: var(--bg-color-alt);
+  background-size: cover;
+  background-position: center;
 }
 
 .about h2 {
@@ -439,7 +472,7 @@ nav ul li a:hover {
   font-size: 1.4rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--primary-color);
+  color: var(--primary-color-alt);
 }
 
 
@@ -468,7 +501,9 @@ nav ul li a:hover {
 
 /* Experience section styles */
 .experience {
-  background-color: var(--bg-color);
+  background: var(--bg-color);
+  background-size: cover;
+  background-position: center;
   padding: 4rem 0;
 }
 
@@ -534,7 +569,7 @@ nav ul li a:hover {
 }
 
 .timeline-content {
-  background-color: var(--bg-color-alt);
+  background-color: var(--btn-bg-color);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -578,7 +613,9 @@ nav ul li a:hover {
 /* Skills section styles */
 .skills {
   padding: 4rem 0;
-  background-color: var(--bg-color-alt);
+  background: var(--bg-color-alt);
+  background-size: cover;
+  background-position: center;
 }
 
 .skills h2 {
@@ -597,7 +634,7 @@ nav ul li a:hover {
   font-size: 1.4rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--primary-color);
+  color: var(--primary-color-alt);
 }
 
 .skills-grid {
@@ -640,7 +677,9 @@ nav ul li a:hover {
 /* Projects section styles */
 .projects {
   padding: 4rem 0;
-  background-color: var(--bg-color);
+  background: var(--bg-color);
+  background-size: cover;
+  background-position: center;
 }
 
 .projects h2 {
@@ -732,6 +771,15 @@ nav ul li a:hover {
   color: #fff;
 }
 
+.orange-bg {
+  background: #f2a971;
+  color: #fff;
+}
+
+.orange-bg h3 {
+  color: #fff;
+}
+
 .project-card img {
   width: 100%;
   height: 300px;
@@ -798,7 +846,9 @@ nav ul li a:hover {
 /* Contact section styles */
 .contact {
   padding: 4rem 0;
-  background-color: var(--bg-color-alt);
+  background: var(--bg-color-alt);
+  background-size: cover;
+  background-position: center;
 }
 
 .contact h2 {
@@ -811,7 +861,7 @@ nav ul li a:hover {
   font-size: 1.4rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--primary-color);
+  color: var(--primary-color-alt);
 }
 
 .contact-form {
@@ -847,14 +897,14 @@ nav ul li a:hover {
 
 .contact-form input:hover,
 .contact-form textarea:hover {
-  border-color: var(--primary-color);
+  border-color: var(--primary-color-alt);
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--primary-color-alt);
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
@@ -873,7 +923,9 @@ nav ul li a:hover {
 
 /* Footer styles */
 footer {
-  background-color: var(--bg-color);
+  background: var(--footer-color);
+  background-size: cover;
+  background-position: center;
   color: var(--text-color);
   padding: 1rem 0;
   font-size: 1.4rem;
