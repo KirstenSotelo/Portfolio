@@ -780,6 +780,15 @@ nav ul li a:hover {
   color: #fff;
 }
 
+.green-bg {
+  background: #4dba70;
+  color: #fff;
+}
+
+.green-bg h3 {
+  color: #fff;
+}
+
 .project-card img {
   width: 100%;
   height: 300px;
