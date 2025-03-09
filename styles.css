@@ -11,8 +11,8 @@
   --primary-color-alt: #007bff;
   --secondary-color: #1d3b66;
   --btn-color: #1d3b66;
-  --btn-bg-color: transparent;
-  --btn-bg-color-alt: transparent;
+  --btn-bg-color: #FDFDFD;
+  --btn-bg-color-alt: #F7F7F7;
   --btn-outline-color: #1d3b66;
   --accent-color: #28a745;
   --footer-color: #F0F0F0;
@@ -330,7 +330,7 @@ nav ul li a:hover {
 /* Rest of the CSS remains unchanged */
 
 .skill-card {
-  background: var(--btn-bg-color-alt);
+  background: var(--btn-bg-color);
   color: var(--text-color);
   padding: 1rem;
   border-radius: 8px;
@@ -613,7 +613,7 @@ nav ul li a:hover {
 /* Skills section styles */
 .skills {
   padding: 4rem 0;
-  background: var(--bg-color-alt);
+  background: var(--bg-color);
   background-size: cover;
   background-position: center;
 }
@@ -677,7 +677,7 @@ nav ul li a:hover {
 /* Projects section styles */
 .projects {
   padding: 4rem 0;
-  background: var(--bg-color);
+  background: var(--bg-color-alt);
   background-size: cover;
   background-position: center;
 }
