@@ -1,3 +1,6 @@
+// Import the Web3Forms access key from config.js
+import { WEB3FORMS_ACCESS_KEY } from './config.js';
+
 // Initialize Feather icons
 feather.replace();
 
@@ -154,46 +157,82 @@ document.addEventListener('DOMContentLoaded', () => {
   addMatrixEffect();
   addCircuitPattern();
   
-  // Form submission handling
+  // Form submission handling with Web3Forms
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Simulate form submission
+      // Get form data
+      const formData = new FormData(this);
+      
+      // Add the access key to the form data
+      formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+      
+      // Update UI to show loading state
       const submitButton = this.querySelector('button[type="submit"]');
       const originalText = submitButton.textContent;
-      
       submitButton.textContent = 'Sending...';
       submitButton.disabled = true;
       
-      // Simulate API call
-      setTimeout(() => {
-        // Create success message
+      try {
+        // Send the form data to Web3Forms
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          // Create success message
+          const formGroups = this.querySelectorAll('.form-group');
+          const lastFormGroup = formGroups[formGroups.length - 1];
+          
+          const successMessage = document.createElement('div');
+          successMessage.classList.add('success-message');
+          successMessage.innerHTML = `
+            <div style="color: var(--success); background: rgba(6, 214, 160, 0.1); padding: var(--space-md); border-radius: var(--border-radius-md); margin-top: var(--space-md);">
+              <p style="margin: 0;"><i data-feather="check-circle"></i> Message sent successfully! I'll get back to you soon.</p>
+            </div>
+          `;
+          
+          lastFormGroup.after(successMessage);
+          feather.replace();
+          
+          // Reset form
+          contactForm.reset();
+        } else {
+          // Handle error
+          throw new Error(data.message || 'Something went wrong!');
+        }
+      } catch (error) {
+        // Show error message
         const formGroups = this.querySelectorAll('.form-group');
         const lastFormGroup = formGroups[formGroups.length - 1];
         
-        const successMessage = document.createElement('div');
-        successMessage.classList.add('success-message');
-        successMessage.innerHTML = `
-          <div style="color: var(--success); background: rgba(6, 214, 160, 0.1); padding: var(--space-md); border-radius: var(--border-radius-md); margin-top: var(--space-md);">
-            <p style="margin: 0;"><i data-feather="check-circle"></i> Message sent successfully! I'll get back to you soon.</p>
+        const errorMessage = document.createElement('div');
+        errorMessage.classList.add('error-message');
+        errorMessage.innerHTML = `
+          <div style="color: var(--danger); background: rgba(239, 71, 111, 0.1); padding: var(--space-md); border-radius: var(--border-radius-md); margin-top: var(--space-md);">
+            <p style="margin: 0;"><i data-feather="alert-circle"></i> ${error.message || 'Failed to send message. Please try again.'}</p>
           </div>
         `;
         
-        lastFormGroup.after(successMessage);
+        lastFormGroup.after(errorMessage);
         feather.replace();
         
-        // Reset form
-        contactForm.reset();
+        console.error('Form submission error:', error);
+      } finally {
+        // Reset button state
         submitButton.textContent = originalText;
         submitButton.disabled = false;
         
-        // Remove success message after 5 seconds
+        // Remove messages after 5 seconds
         setTimeout(() => {
-          successMessage.remove();
+          document.querySelectorAll('.success-message, .error-message').forEach(el => el.remove());
         }, 5000);
-      }, 1500);
+      }
     });
   }
   
