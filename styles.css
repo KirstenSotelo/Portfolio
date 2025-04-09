@@ -1,24 +1,21 @@
 :root {
-  /* Tech-inspired color palette */
-  --primary: #00b4d8;
-  --primary-dark: #0077b6;
-  --secondary: #7209b7;
-  --accent: #4cc9f0;
-  --dark: #0d1b2a;
-  --dark-medium: #1b263b;
-  --light: #e0fbfc;
-  --light-gray: #c8d3d5;
-  --success: #06d6a0;
-  --warning: #ffd166;
-  --danger: #ef476f;
-  --code-bg: #112240;
-
-  /* TMU Colors */
-  --tmu-blue: #004c9b;
-  --tmu-gold: #ffb81c;
+  /* Sakura-inspired color palette */
+  --primary: #f99d92da;
+  --primary-dark: #c9918c;
+  --secondary: #9e7682;
+  --accent: #f1a3a3;
+  --dark: #2d232e;
+  --dark-medium: #534954;
+  --light: #f9f5f6;
+  --light-gray: #e8e1e2;
+  --success: #a0c9a4;
+  --warning: #f2d0a4;
+  --danger: #e88c7d;
+  --code-bg: #2d232e;
 
   /* Typography */
-  --font-main: "Montserrat", "Segoe UI", Roboto, sans-serif;
+  --font-main: "Poppins", "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Poppins", "Segoe UI", Roboto, sans-serif;
   --font-code: "Fira Code", "Courier New", monospace;
 
   /* Spacing */
@@ -46,32 +43,36 @@
   --text-primary: var(--light);
   --text-secondary: var(--light-gray);
   --border-color: rgba(255, 255, 255, 0.1);
-  --card-bg: rgba(27, 38, 59, 0.8);
-  --nav-bg: rgba(13, 27, 42, 0.9);
+  --card-bg: rgba(83, 73, 84, 0.8);
+  --nav-bg: rgba(45, 35, 46, 0.9);
 }
 
-/* Light theme */
+/* Light theme - now darker with more pink tint */
 .light-theme {
-  --bg-primary: #f8f9fa;
-  --bg-secondary: #e9ecef;
-  --text-primary: #212529;
-  --text-secondary: #495057;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --nav-bg: rgba(248, 249, 250, 0.9);
+  --bg-primary: #e8dade;
+  --bg-secondary: #dac9cf;
+  --text-primary: #2d232e;
+  --text-secondary: #534954;
+  --border-color: rgba(0, 0, 0, 0.2);
+  --card-bg: rgba(245, 235, 240, 0.9);
+  --nav-bg: rgba(232, 218, 222, 0.95);
+  --hover-color: #b37b76;
+  --hover-bg: rgba(201, 145, 140, 0.2);
 }
 
-/* Blue-Gold theme (TMU colors) */
+/* Colorful theme - more pinkish backgrounds */
 .colorful-theme {
-  --bg-primary: #002855;
-  --bg-secondary: #004c9b;
-  --text-primary: #ffffff;
-  --text-secondary: #ffb81c;
-  --border-color: rgba(255, 184, 28, 0.3);
-  --card-bg: rgba(0, 76, 155, 0.8);
-  --nav-bg: rgba(0, 40, 85, 0.9);
-  --primary: var(--tmu-gold);
-  --accent: #ffd166;
+  --bg-primary: #f8e1e5;
+  --bg-secondary: #f2c1cc;
+  --text-primary: #33272a;
+  --text-secondary: #594a4e;
+  --border-color: rgba(228, 177, 171, 0.3);
+  --card-bg: rgba(248, 225, 229, 0.9);
+  --nav-bg: rgba(248, 225, 229, 0.95);
+  --primary: #e4b1ab;
+  --accent: #f2d0d9;
+  --hover-color: #c9918c;
+  --hover-bg: rgba(228, 177, 171, 0.2);
 }
 
 /* Apply default theme */
@@ -83,10 +84,50 @@ body {
   padding: 0;
   transition: background-color var(--transition-normal);
   overflow-x: hidden;
-  background-image: radial-gradient(circle at 25px 25px, rgba(0, 180, 216, 0.15) 2%, transparent 0%),
-    radial-gradient(circle at 75px 75px, rgba(114, 9, 183, 0.1) 2%, transparent 0%);
-  background-size: 100px 100px;
-  background-attachment: fixed;
+
+  /* New flowing sakura-inspired background */
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-primary) 100%);
+  position: relative;
+}
+
+/* Add a subtle flowing gradient overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 30%, rgba(228, 177, 171, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(242, 208, 217, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(158, 118, 130, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Add subtle floating sakura petals to the background */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400' opacity='0.03'%3E%3Cpath d='M179.5,104.5c-14.4,14.4-14.4,37.6,0,52c14.4,14.4,37.6,14.4,52,0c14.4-14.4,14.4-37.6,0-52 C217.1,90.1,193.9,90.1,179.5,104.5z M206.6,131.6c-4.1,4.1-10.8,4.1-14.9,0c-4.1-4.1-4.1-10.8,0-14.9c4.1-4.1,10.8-4.1,14.9,0 C210.7,120.8,210.7,127.5,206.6,131.6z' fill='%23e4b1ab'/%3E%3Cpath d='M112.2,248.8c-14.4,14.4-14.4,37.6,0,52c14.4,14.4,37.6,14.4,52,0c14.4-14.4,14.4-37.6,0-52 C149.8,234.4,126.5,234.4,112.2,248.8z M139.2,275.9c-4.1,4.1-10.8,4.1-14.9,0c-4.1-4.1-4.1-10.8,0-14.9c4.1-4.1,10.8-4.1,14.9,0 C143.3,265,143.3,271.7,139.2,275.9z' fill='%23f2d0d9'/%3E%3Cpath d='M263.9,207.2c-14.4,14.4-14.4,37.6,0,52c14.4,14.4,37.6,14.4,52,0c14.4-14.4,14.4-37.6,0-52 C301.5,192.8,278.3,192.8,263.9,207.2z M290.9,234.3c-4.1,4.1-10.8,4.1-14.9,0c-4.1-4.1-4.1-10.8,0-14.9c4.1-4.1,10.8-4.1,14.9,0 C295,223.5,295,230.2,290.9,234.3z' fill='%239e7682'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -2;
+  animation: floatBackground 120s linear infinite;
+}
+
+/* Add animation for the floating background */
+@keyframes floatBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 /* Apply dark theme by default */
@@ -96,8 +137,8 @@ body {
   --text-primary: var(--light);
   --text-secondary: var(--light-gray);
   --border-color: rgba(255, 255, 255, 0.1);
-  --card-bg: rgba(27, 38, 59, 0.8);
-  --nav-bg: rgba(13, 27, 42, 0.9);
+  --card-bg: rgba(83, 73, 84, 0.8);
+  --nav-bg: rgba(45, 35, 46, 0.9);
 }
 
 /* Typography */
@@ -110,6 +151,7 @@ h6 {
   margin-top: 0;
   line-height: 1.2;
   font-weight: 700;
+  font-family: var(--font-heading);
 }
 
 h1 {
@@ -141,7 +183,7 @@ h2::after {
   transition: width var(--transition-normal);
 }
 
-/* New hover animation for h2 */
+/* Hover animation for h2 */
 h2:hover::after {
   width: 100%;
 }
@@ -153,7 +195,7 @@ h3 {
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-/* New hover animation for h3 */
+/* Hover animation for h3 */
 h3:hover {
   transform: translateX(5px);
   color: var(--accent);
@@ -168,7 +210,7 @@ h4 {
   transition: opacity var(--transition-fast);
 }
 
-/* New hover animation for h4 */
+/* Hover animation for h4 */
 h4:hover {
   opacity: 1;
 }
@@ -189,7 +231,7 @@ a:hover {
   color: var(--accent);
 }
 
-/* New underline animation for links */
+/* Underline animation for links */
 a:not(.btn):not(.logo):not(nav a):not(.social-links a)::after {
   content: "";
   position: absolute;
@@ -241,7 +283,7 @@ header .container {
   transition: transform var(--transition-fast);
 }
 
-/* New hover animation for logo */
+/* Hover animation for logo */
 .logo:hover {
   transform: scale(1.05);
 }
@@ -252,7 +294,7 @@ header .container {
   transition: transform var(--transition-normal);
 }
 
-/* New hover animation for logo icon */
+/* Hover animation for logo icon */
 .logo:hover .logo-icon {
   transform: rotate(20deg);
 }
@@ -273,14 +315,12 @@ nav ul {
   padding: 0;
 }
 
-/* Add this to your existing styles.css file */
-
 /* Hide timeline on smaller screens */
 @media (max-width: 768px) {
   .timeline {
     display: none;
   }
-  
+
   /* Show a message instead of the timeline */
   .experience .container::after {
     content: "Please view on a larger screen to see the detailed timeline.";
@@ -294,7 +334,7 @@ nav ul {
     font-style: italic;
     color: var(--text-secondary);
   }
-  
+
   /* Show the original timeline content that was hidden */
   .experience .timeline-content {
     display: block !important;
@@ -344,11 +384,21 @@ nav ul {
   }
 
   /* Staggered animation for menu items */
-  nav ul.active li:nth-child(1) { transition-delay: 0.05s; }
-  nav ul.active li:nth-child(2) { transition-delay: 0.1s; }
-  nav ul.active li:nth-child(3) { transition-delay: 0.15s; }
-  nav ul.active li:nth-child(4) { transition-delay: 0.2s; }
-  nav ul.active li:nth-child(5) { transition-delay: 0.25s; }
+  nav ul.active li:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+  nav ul.active li:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  nav ul.active li:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+  nav ul.active li:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+  nav ul.active li:nth-child(5) {
+    transition-delay: 0.25s;
+  }
 
   /* Hamburger menu icon animation */
   .menu-toggle {
@@ -404,7 +454,7 @@ nav a:hover::after {
   transition: transform var(--transition-fast);
 }
 
-/* New hover animation for menu toggle */
+/* Hover animation for menu toggle */
 .menu-toggle:hover {
   transform: rotate(90deg);
 }
@@ -432,7 +482,7 @@ nav a:hover::after {
 
 .theme-button[aria-pressed="true"] {
   color: var(--primary);
-  background-color: rgba(0, 180, 216, 0.1);
+  background-color: rgba(228, 177, 171, 0.1);
 }
 
 /* Hero Section */
@@ -445,6 +495,16 @@ nav a:hover::after {
   overflow: hidden;
 }
 
+#sakura-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -452,21 +512,9 @@ nav a:hover::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
-    linear-gradient(45deg, rgba(114, 9, 183, 0.1) 0%, transparent 50%);
-  z-index: -1;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300b4d8' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  z-index: -1;
-  opacity: 0.5;
+  background: linear-gradient(135deg, rgba(228, 177, 171, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, rgba(158, 118, 130, 0.1) 0%, transparent 50%);
+  z-index: -2;
 }
 
 .hero h1 {
@@ -536,7 +584,7 @@ nav a:hover::after {
 .btn-primary:hover {
   background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 4px 12px rgba(228, 177, 171, 0.3);
 }
 
 .btn-outline {
@@ -572,7 +620,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* New ripple effect for buttons */
+/* Ripple effect for buttons */
 .btn::after {
   content: "";
   position: absolute;
@@ -636,7 +684,7 @@ nav a:hover::after {
 /* Enhanced hover animation for profile image */
 .about-image img:hover {
   transform: scale(1.05) translateY(-8px) rotate(2deg);
-  box-shadow: 0 20px 40px rgba(0, 180, 216, 0.4);
+  box-shadow: 0 20px 40px rgba(228, 177, 171, 0.4);
   filter: brightness(1.1);
   border-color: var(--accent);
 }
@@ -650,7 +698,7 @@ nav a:hover::after {
   transition: transform var(--transition-normal);
 }
 
-/* New hover animation for about text */
+/* Hover animation for about text */
 .about-text p:hover {
   transform: translateX(5px);
 }
@@ -669,7 +717,7 @@ nav a:hover::after {
 }
 
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;
@@ -688,7 +736,7 @@ nav a:hover::after {
 }
 
 .timeline-year::before {
-  content: '';
+  content: "";
   position: absolute;
   left: -10px;
   top: 50%;
@@ -698,7 +746,7 @@ nav a:hover::after {
   background-color: var(--primary);
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 0 0 4px rgba(228, 177, 171, 0.3);
 }
 
 .timeline-entry {
@@ -722,6 +770,7 @@ nav a:hover::after {
 
 .timeline-entries {
   position: relative;
+  width: 100%;
 }
 
 .timeline-content {
@@ -741,10 +790,10 @@ nav a:hover::after {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   border-left-width: 8px;
   border-left-color: var(--accent);
-  background: linear-gradient(to right, var(--card-bg), rgba(0, 180, 216, 0.05));
+  background: linear-gradient(to right, var(--card-bg), rgba(228, 177, 171, 0.05));
 }
 
-/* Add tech-themed hover effect to timeline cards */
+/* Add sakura-themed hover effect to timeline cards */
 .timeline-content {
   position: relative;
   overflow: hidden;
@@ -757,9 +806,8 @@ nav a:hover::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(0, 180, 216, 0.1) 0%, transparent 20%),
-    radial-gradient(circle at 80% 30%, rgba(114, 9, 183, 0.1) 0%, transparent 20%);
+  background-image: radial-gradient(circle at 20% 50%, rgba(228, 177, 171, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 80% 30%, rgba(158, 118, 130, 0.1) 0%, transparent 20%);
   opacity: 0;
   transition: opacity var(--transition-normal);
   pointer-events: none;
@@ -770,7 +818,7 @@ nav a:hover::after {
   opacity: 1;
 }
 
-/* Add circuit board pattern on hover */
+/* Add sakura pattern on hover */
 .timeline-content::before {
   content: "";
   position: absolute;
@@ -780,7 +828,7 @@ nav a:hover::after {
   height: 20px;
   background-color: var(--primary);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.3);
+  box-shadow: 0 0 0 4px rgba(228, 177, 171, 0.3);
   transition: all var(--transition-normal);
   z-index: 2;
 }
@@ -788,37 +836,7 @@ nav a:hover::after {
 .timeline-content:hover::before {
   background-color: var(--accent);
   transform: scale(1.2);
-  box-shadow: 0 0 0 6px rgba(0, 180, 216, 0.4), 0 0 20px rgba(0, 180, 216, 0.6);
-}
-
-/* Add digital scan line effect on hover */
-.timeline-content:hover {
-  background-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    transparent 48%,
-    rgba(0, 180, 216, 0.05) 50%,
-    transparent 52%,
-    transparent 100%
-  );
-  background-size: 100% 4px;
-  animation: scanlines 2s linear infinite;
-}
-
-@keyframes scanlines {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 0 100%;
-  }
-}
-
-/* Add glowing border effect */
-.timeline-content:hover {
-  border-top: 1px solid var(--primary);
-  border-right: 1px solid var(--accent);
-  border-bottom: 1px solid var(--primary);
+  box-shadow: 0 0 0 6px rgba(228, 177, 171, 0.4), 0 0 20px rgba(228, 177, 171, 0.6);
 }
 
 .timeline-content h3 {
@@ -841,9 +859,9 @@ nav a:hover::after {
   transition: color var(--transition-fast);
 }
 
-/* Add data-like effect to dates on hover */
+/* Add elegant effect to dates on hover */
 .timeline-content:hover .entry-date {
-  font-family: var(--font-code);
+  font-family: var(--font-heading);
   letter-spacing: 1px;
   color: var(--accent);
 }
@@ -859,7 +877,7 @@ nav a:hover::after {
   position: relative;
 }
 
-/* Add tech-themed hover effect to list items */
+/* Add sakura-themed hover effect to list items */
 .timeline-content li:hover {
   transform: translateX(10px);
   color: var(--primary);
@@ -943,7 +961,7 @@ nav a:hover::after {
   transition: all var(--transition-normal);
 }
 
-/* New hover animation for project images */
+/* Hover animation for project images */
 .project-card:hover img {
   transform: scale(1.05);
   filter: brightness(1.1);
@@ -978,27 +996,27 @@ nav a:hover::after {
 
 /* Custom backgrounds for project cards */
 .dark-bg {
-  background-color: rgba(35, 0, 100, 0.2);
+  background-color: rgba(158, 118, 130, 0.2);
 }
 
 .pink-bg {
-  background-color: rgba(114, 9, 183, 0.2);
+  background-color: rgba(242, 208, 217, 0.2);
 }
 
 .navy-bg {
-  background-color: rgba(0, 154, 237, 0.2);
+  background-color: rgba(201, 145, 140, 0.2);
 }
 
 .grey-bg {
-  background-color: rgba(27, 38, 59, 0.5);
+  background-color: rgba(83, 73, 84, 0.2);
 }
 
 .orange-bg {
-  background-color: rgba(255, 209, 102, 0.2);
+  background-color: rgba(242, 208, 164, 0.2);
 }
 
 .green-bg {
-  background-color: rgba(6, 214, 160, 0.2);
+  background-color: rgba(160, 201, 164, 0.2);
 }
 
 /* Skills Section */
@@ -1060,7 +1078,7 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-/* New glow effect for skill cards */
+/* Glow effect for skill cards */
 .skill-card::after {
   content: "";
   position: absolute;
@@ -1104,7 +1122,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* New hover animation for concept card paragraphs */
+/* Hover animation for concept card paragraphs */
 .skills-grid-concepts .skill-card p {
   transition: transform var(--transition-fast);
   position: relative;
@@ -1131,12 +1149,12 @@ nav a:hover::after {
 .contact .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align content to the left */
+  align-items: flex-start;
   width: 100%;
 }
 
 .contact-form {
-  width: 100%; /* Make the form span the full width */
+  width: 100%;
   max-width: 100%;
   margin-top: var(--space-lg);
 }
@@ -1162,7 +1180,7 @@ nav a:hover::after {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+  box-shadow: 0 0 0 2px rgba(228, 177, 171, 0.2);
   transform: translateY(-2px);
 }
 
@@ -1172,14 +1190,14 @@ nav a:hover::after {
 }
 
 .form-group button {
-  align-self: flex-start; /* Align button to the left */
+  align-self: flex-start;
 }
 
-/* Add tech-themed glow effect on hover */
+/* Add sakura-themed glow effect on hover */
 .form-group input:hover,
 .form-group textarea:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 10px rgba(0, 180, 216, 0.2);
+  box-shadow: 0 0 10px rgba(228, 177, 171, 0.2);
 }
 
 /* Add responsive styles for the contact form */
@@ -1187,12 +1205,12 @@ nav a:hover::after {
   .contact-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg); /* Increased gap between columns to prevent overlap */
+    gap: var(--space-lg);
   }
 
   .form-group:nth-child(3),
   .form-group:nth-child(4) {
-    grid-column: span 2; /* Make textarea and button span both columns */
+    grid-column: span 2;
   }
 
   /* Add specific padding to ensure no overlap */
@@ -1208,11 +1226,11 @@ nav a:hover::after {
 @media (max-width: 767px) {
   .contact-form {
     width: 100%;
-    display: block; /* Ensure block display on mobile */
+    display: block;
   }
 
   .form-group {
-    padding: 0; /* Reset any padding on mobile */
+    padding: 0;
   }
 }
 
@@ -1247,7 +1265,7 @@ footer .container {
   transform: translateY(-5px) scale(1.2);
 }
 
-/* New glow effect for social icons */
+/* Glow effect for social icons */
 .social-links a::after {
   content: "";
   position: absolute;
@@ -1312,99 +1330,36 @@ footer .container {
   transform: translateY(0);
 }
 
-/* Terminal-like code effect for tech theme */
-.code-effect {
-  font-family: var(--font-code);
-  background-color: var(--code-bg);
-  color: var(--light);
-  padding: var(--space-md);
-  border-radius: var(--border-radius-md);
-  position: relative;
-  margin: var(--space-lg) 0;
-  transition: all var(--transition-normal);
-}
-
-.code-effect::before {
-  content: "> ";
-  color: var(--primary);
-}
-
-.code-effect::after {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 20px;
-  background-color: var(--primary);
-  animation: blink 1s infinite;
-  vertical-align: middle;
-  margin-left: 5px;
-}
-
-/* New hover animation for code effect */
-.code-effect:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  background-color: var(--dark);
-}
-
-@keyframes blink {
-  0%,
-  100% {
+/* Sakura falling animation */
+@keyframes fall {
+  0% {
+    opacity: 0;
+    top: -10%;
+    transform: translateX(0) rotate(0deg);
+  }
+  10% {
     opacity: 1;
   }
-  50% {
+  20% {
+    transform: translateX(20px) rotate(45deg);
+  }
+  40% {
+    transform: translateX(-20px) rotate(-45deg);
+  }
+  60% {
+    transform: translateX(20px) rotate(45deg);
+  }
+  80% {
+    transform: translateX(-20px) rotate(-45deg);
+  }
+  100% {
+    top: 110%;
+    transform: translateX(0) rotate(90deg);
     opacity: 0;
   }
 }
 
-/* New typing animation */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-/* Matrix-like background animation for sections */
-.matrix-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.05;
-  background: linear-gradient(rgba(0, 180, 216, 0.1), rgba(0, 180, 216, 0.1)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%2300b4d8' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
-  transition: opacity var(--transition-normal);
-}
-
-/* Hover animation for matrix background */
-section:hover .matrix-bg {
-  opacity: 0.08;
-}
-
-/* Circuit board pattern for sections */
-.circuit-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 304' width='304' height='304'%3E%3Cpath fill='%2300b4d8' fill-opacity='0.4' d='M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 217.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1zm273-2h14v2h-16V0h2v16zm-32 273v15h-2v-14h-14v14h-2v-16h18v1zM0 92.1A5.02 5.02 0 0 1 6 97a5 5 0 0 1-6 4.9v-2.07a3 3 0 1 0 0-5.66V92.1zM80 272h2v32h-2v-32zm37.9 32h-2.07a3 3 0 0 0-5.66 0h-2.07a5 5 0 0 1 9.8 0zM5.9 0A5.02 5.02 0 0 1 0 5.9V3.83A3 3 0 0 0 3.83 0H5.9zm294.2 0h2.07A3 3 0 0 0 304 3.83V5.9a5 5 0 0 1-3.9-5.9zm3.9 300.1v2.07a3 3 0 0 0-1.83 1.83h-2.07a5 5 0 0 1 3.9-3.9zM97 100a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-48 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 96a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-144a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM49 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM33 68a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 240a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm80-176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm112 176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 180a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 84a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'%3E%3C/path%3E%3C/svg%3E");
-  transition: opacity var(--transition-normal);
-}
-
-/* Hover animation for circuit pattern */
-section:hover .circuit-pattern {
-  opacity: 0.08;
-}
-
-/* New floating animation for tech elements */
+/* Floating animation for elements */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -1417,16 +1372,16 @@ section:hover .circuit-pattern {
   }
 }
 
-/* New pulse animation for tech elements */
+/* Pulse animation for elements */
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.4);
+    box-shadow: 0 0 0 0 rgba(228, 177, 171, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(0, 180, 216, 0);
+    box-shadow: 0 0 0 10px rgba(228, 177, 171, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 180, 216, 0);
+    box-shadow: 0 0 0 0 rgba(228, 177, 171, 0);
   }
 }
 
@@ -1519,44 +1474,39 @@ section:hover .circuit-pattern {
     padding: var(--space-md);
     margin-bottom: var(--space-md);
   }
-  
+
   .timeline-content:hover {
-    transform: translateY(-5px) translateX(3px); /* Reduce transform amount on mobile */
+    transform: translateY(-5px) translateX(3px);
   }
-  
+
   .timeline-content h3 {
     font-size: 1.5rem;
   }
-  
+
   .timeline-content h4 {
     font-size: 1.1rem;
   }
-  
+
   .timeline-content ul {
     padding-left: var(--space-md);
   }
-  
+
   .timeline-content li:hover {
-    transform: translateX(5px); /* Reduce transform amount on mobile */
+    transform: translateX(5px);
   }
-  
+
   /* Ensure the timeline dot is visible on mobile */
   .timeline-content::before {
     left: -10px;
     width: 16px;
     height: 16px;
   }
-  
-  /* Adjust scan line animation to be less intensive on mobile */
-  .timeline-content:hover {
-    background-size: 100% 6px; /* Larger scan lines for better visibility */
-  }
-  
+
   /* Ensure the experience section has proper padding on mobile */
   .experience {
     padding: var(--space-lg) 0;
   }
-  
+
   /* Fix for any potential overflow issues */
   .timeline-content {
     overflow: hidden;
@@ -1570,38 +1520,38 @@ section:hover .circuit-pattern {
   .timeline-content {
     padding: var(--space-sm);
   }
-  
+
   .timeline-content h3 {
     font-size: 1.3rem;
   }
-  
+
   .timeline-content h4 {
     font-size: 1rem;
   }
-  
+
   .timeline-content::before {
     left: -8px;
     width: 12px;
     height: 12px;
   }
-  
+
   /* Ensure text is readable on small screens */
   .timeline-content li {
     font-size: 0.95rem;
   }
-  
+
   /* Adjust entry date for better visibility */
   .entry-date {
     font-size: 0.85rem;
   }
-  
+
   /* Fix for potential touch issues on mobile */
   .timeline-content:active {
     transform: translateY(-5px) translateX(3px);
     border-left-width: 6px;
     border-left-color: var(--accent);
   }
-  
+
   /* Add touch-friendly active states for mobile */
   .timeline-content li:active {
     transform: translateX(5px);
@@ -1618,34 +1568,20 @@ section:hover .circuit-pattern {
     border-left-width: 6px;
     border-left-color: var(--accent);
   }
-  
+
   .timeline-content li:active {
     transform: translateX(5px);
     color: var(--primary);
   }
-  
+
   .timeline-content li:active::before {
     background-color: var(--accent);
     transform: scale(1.5);
   }
-  
-  /* Ensure the scan line effect works on touch */
-  .timeline-content:active {
-    background-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 48%,
-      rgba(0, 180, 216, 0.05) 50%,
-      transparent 52%,
-      transparent 100%
-    );
-    background-size: 100% 6px;
-    animation: scanlines 2s linear infinite;
-  }
-  
+
   /* Ensure date effect works on touch */
   .timeline-content:active .entry-date {
-    font-family: var(--font-code);
+    font-family: var(--font-heading);
     letter-spacing: 1px;
     color: var(--accent);
   }
@@ -1654,9 +1590,10 @@ section:hover .circuit-pattern {
 /* Fix for potential layout issues in the experience section */
 .experience .container {
   width: 100%;
-  max-width: 100%;
+  max-width: 1200px;
   padding: 0 var(--space-md);
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 /* Ensure the timeline structure is responsive */
@@ -1681,7 +1618,7 @@ body {
   section {
     padding: var(--space-lg) 0;
   }
-  
+
   .container {
     padding: 0 var(--space-md);
   }
@@ -1732,18 +1669,18 @@ body {
   margin-top: var(--space-lg);
 }
 
-/* New tech-themed animations */
-.tech-float {
+/* Sakura-themed animations */
+.sakura-float {
   animation: float 6s ease-in-out infinite;
 }
 
-.tech-pulse {
+.sakura-pulse {
   animation: pulse 2s infinite;
 }
 
-/* New hover effect for section headings */
+/* Hover effect for section headings */
 section h2:hover {
-  text-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
+  text-shadow: 0 0 10px rgba(228, 177, 171, 0.5);
 }
 
 /* Hero Section - Mobile Fixes */
@@ -1826,7 +1763,13 @@ section h2:hover {
   }
 
   /* Fix for all text elements to prevent overflow */
-  h1, h2, h3, h4, h5, h6, p {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -1853,127 +1796,150 @@ section h2:hover {
   }
 }
 
-/* Experience Section - Laptop View Fixes */
-@media (min-width: 769px) and (max-width: 1440px) {
-  .experience {
-    padding: var(--space-lg) 0;
-  }
-  
-  .timeline-content {
-    padding: var(--space-md);
-    margin-bottom: var(--space-md);
-    max-width: 90%;
-  }
-  
-  .timeline-content h3 {
-    font-size: 1.5rem;
-  }
-  
-  .timeline-content h4 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-xs);
-  }
-  
-  .timeline-content ul {
-    padding-left: var(--space-md);
-  }
-  
-  .timeline-content li {
-    margin-bottom: var(--space-xs);
-  }
-  
-  /* Ensure the timeline dot is properly positioned */
-  .timeline-content::before {
-    left: -10px;
-  }
+/* Sakura petal styles */
+.sakura {
+  position: absolute;
+  background-color: var(--primary);
+  border-radius: 150% 0 150% 0;
+  animation: fall linear forwards;
+  z-index: 0;
 }
 
-/* Contact Form Fixes */
-.contact {
-  padding: var(--space-xl) 0;
-  position: relative;
+.sakura::after {
+  content: "";
+  position: absolute;
+  top: -14%;
+  left: -10%;
+  display: block;
   width: 100%;
-  overflow: hidden;
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 150% 0 150% 0;
+  transform: rotate(15deg);
 }
 
-.contact .container {
+.sakura.flipped {
+  background-color: var(--accent);
+}
+
+.sakura.flipped::after {
+  background-color: var(--accent);
+}
+
+/* Adjust the dark theme background */
+.dark-theme {
+  --bg-primary: var(--dark);
+  --bg-secondary: var(--dark-medium);
+  --text-primary: var(--light);
+  --text-secondary: var(--light-gray);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(83, 73, 84, 0.8);
+  --nav-bg: rgba(45, 35, 46, 0.9);
+}
+
+/* Adjust the light theme background */
+.light-theme {
+  --bg-primary: #e8dade;
+  --bg-secondary: #dac9cf;
+  --text-primary: #2d232e;
+  --text-secondary: #534954;
+  --border-color: rgba(0, 0, 0, 0.2);
+  --card-bg: rgba(245, 235, 240, 0.9);
+  --nav-bg: rgba(232, 218, 222, 0.95);
+  --hover-color: #b37b76;
+  --hover-bg: rgba(201, 145, 140, 0.2);
+}
+
+/* Update hover effects for light theme */
+.light-theme .btn-outline:hover {
+  color: white;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(201, 145, 140, 0.3);
+}
+
+.light-theme a:hover {
+  color: var(--hover-color);
+}
+
+.light-theme .skill-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-dark);
+  background-color: var(--hover-bg);
+  z-index: 1;
+}
+
+.light-theme .timeline-content:hover {
+  transform: translateY(-8px) translateX(5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-left-width: 8px;
+  border-left-color: var(--primary-dark);
+  background: linear-gradient(to right, var(--card-bg), rgba(201, 145, 140, 0.1));
+}
+
+.light-theme .project-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Add a subtle pinkish texture to light theme background */
+.light-theme body::before {
+  background: radial-gradient(circle at 20% 30%, rgba(228, 177, 171, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(242, 208, 217, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(158, 118, 130, 0.1) 0%, transparent 70%);
+}
+
+/* Adjust the colorful theme background */
+.colorful-theme {
+  --bg-primary: #f8ccd4e6;
+  --bg-secondary: #e5b7c1e2;
+  --text-primary: #33272a;
+  --text-secondary: #594a4e;
+  --border-color: rgba(228, 177, 171, 0.3);
+  --card-bg: rgba(248, 225, 229, 0.9);
+  --nav-bg: rgba(248, 225, 229, 0.95);
+  --primary: #e4b1ab;
+  --accent: #f29c96;
+  --hover-color: #c9918c;
+  --hover-bg: rgba(228, 177, 171, 0.2);
+}
+
+/* Enhanced colorful theme with more pink */
+.colorful-theme body::before {
+  background: radial-gradient(circle at 20% 30%, rgba(242, 208, 217, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(228, 177, 171, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(158, 118, 130, 0.15) 0%, transparent 70%);
+}
+
+/* Sakura petal background */
+.sakura {
+  position: absolute;
+  background-color: var(--primary);
+  border-radius: 150% 0 150% 0;
+  animation: fall linear forwards;
+  z-index: 0;
+}
+
+.sakura::after {
+  content: "";
+  position: absolute;
+  top: -14%;
+  left: -10%;
+  display: block;
   width: 100%;
-  max-width: 1200px;
-  padding: 0 var(--space-md);
-  box-sizing: border-box;
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 150% 0 150% 0;
+  transform: rotate(15deg);
 }
 
-.contact-form {
-  width: 100%;
-  max-width: 100%;
-  margin-top: var(--space-lg);
-  box-sizing: border-box;
+.sakura.flipped {
+  background-color: var(--accent);
 }
 
-.form-group {
-  margin-bottom: var(--space-md);
-  width: 100%;
-  box-sizing: border-box;
+.sakura.flipped::after {
+  background-color: var(--accent);
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: var(--space-md);
-}
-
-.form-group button {
-  width: auto;
-  box-sizing: border-box;
-}
-
-/* Ensure form is responsive on all screen sizes */
-@media (max-width: 768px) {
-  .contact-form {
-    display: block;
-  }
-  
-  .form-group {
-    width: 100%;
-    padding: 0;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-/* Fix for the experience section on all screen sizes */
-.experience .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-  box-sizing: border-box;
-}
-
-.timeline-content {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-
-/* Ensure all sections have proper width constraints */
-section {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-
-section .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-  box-sizing: border-box;
-}
